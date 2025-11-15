@@ -46,8 +46,8 @@ export default class Player {
     window.removeEventListener("touchstart", this.touchstart);
     window.removeEventListener("touchend", this.touchend);
 
-    window.addEventListener("touchstart", this.touchstart);
-    window.addEventListener("touchend", this.touchend);
+    this.canvas.addEventListener("touchstart", this.touchstart);
+    this.canvas.addEventListener("touchend", this.touchend);
 
   }
 
