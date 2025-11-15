@@ -3,6 +3,10 @@ import Ground from "./Ground.js";
 import CactiController from "./CactiController.js";
 import Score from "./Score.js";
 
+document.fonts.load('10px "Etude Noire"').then(() => {
+  requestAnimationFrame(gameLoop);
+});
+
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
@@ -156,11 +160,13 @@ function reset() {
 
 function showStartGameText() {
   const fontSize = 40 * scaleRatio;
-  ctx.font = `${fontSize}px Verdana`;
-  ctx.fillStyle = "grey";
-  const x = canvas.width / 14;
-  const y = canvas.height / 2;
-  ctx.fillText("Tap Screen To Start", x, y);
+  ctx.font = `${fontSize}px "Etude Noire"`;
+  ctx.fillStyle = "#535353";
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText("Tap Screen To Start", canvas.width / 2, canvas.height / 2);
 }
 
 function updateGameSpeed(frameTimeDelta) {
