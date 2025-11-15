@@ -3,11 +3,9 @@ import Ground from "./Ground.js";
 import CactiController from "./CactiController.js";
 import Score from "./Score.js";
 
-/*
 document.fonts.load('10px "Etude Noire"').then(() => {
   requestAnimationFrame(gameLoop);
 });
-*/
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -133,9 +131,9 @@ function showGameOver() {
   ctx.textBaseline = "middle";
 
   ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
-}
 
-const smallFontSize = 22 * scaleRatio;
+  // Доп. текст
+  const smallFontSize = 22 * scaleRatio;
   ctx.font = `${smallFontSize}px "Etude Noire"`;
   ctx.fillStyle = "#6d6d6d";
 
