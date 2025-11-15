@@ -96,6 +96,15 @@ function setScreen() {
 }
 
 setScreen();
+
+// Прыжок по клику мыши
+window.addEventListener("mousedown", () => {
+  if (!gameOver && !waitingToStart) {
+    player.jump();
+  }
+});
+
+
 //Use setTimeout on Safari mobile rotation otherwise works fine on desktop
 window.addEventListener("resize", () => setTimeout(setScreen, 500));
 
