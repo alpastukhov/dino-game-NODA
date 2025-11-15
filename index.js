@@ -151,7 +151,7 @@ function showGameOver() {
   ctx.fillStyle = "#6d6d6d";
 
   ctx.fillText(
-    "Нажмите Пробел",
+    "Нажмите для рестарта",
     canvas.width / 2,
     canvas.height / 2 + fontSize - 15 * scaleRatio
   );
@@ -249,6 +249,7 @@ function clearScreen() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+/*
 function gameLoop(currentTime) {
   if (previousTime === null) {
     previousTime = currentTime;
@@ -291,6 +292,60 @@ function gameLoop(currentTime) {
 
   requestAnimationFrame(gameLoop);
 }
+*/
+
+function gameLoop(currentTime) {
+  // Игнорируем обновления, если вкладка неактивна
+  if (document.hidden) {
+    requestAnimationFrame(gameLoop);
+    return;
+  }
+
+  if (previousTime === null) {
+    previousTime = currentTime;
+    requestAnimationFrame(gameLoop);
+    return;
+  }
+
+  // Ограничиваем слишком большой frameTimeDelta (например, при возврате на вкладку)
+  const frameTimeDelta = Math.min(currentTime - previousTime, 100);
+  previousTime = currentTime;
+
+  clearScreen();
+
+  if (!gameOver && !waitingToStart) {
+    // Update game objects
+    ground.update(gameSpeed, frameTimeDelta);
+    cactiController.update(gameSpeed, frameTimeDelta);
+    player.update(gameSpeed, frameTimeDelta);
+    score.update(frameTimeDelta);
+    updateGameSpeed(frameTimeDelta);
+  }
+
+  if (!gameOver && cactiController.collideWith(player)) {
+    gameOver = true;
+    setupGameReset();
+    score.setHighScore();
+  }
+
+  // Draw game objects
+  ground.draw();
+  cactiController.draw();
+  player.draw();
+  score.draw();
+
+  if (gameOver) {
+    showGameOver();
+  }
+
+  if (waitingToStart) {
+    showStartGameText();
+  }
+
+  requestAnimationFrame(gameLoop);
+}
+
+
 
 requestAnimationFrame(gameLoop);
 
