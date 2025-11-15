@@ -119,13 +119,16 @@ function getScaleRatio() {
 }
 
 function showGameOver() {
-  const fontSize = 60 * scaleRatio;
-  ctx.font = `${fontSize}px Etude Noire`;
-  ctx.fillStyle = "grey";
-  const x = canvas.width / 4.5;
-  const y = canvas.height / 2;
-  ctx.fillText("GAME OVER", x, y);
+  const fontSize = 40 * scaleRatio;
+  ctx.font = `${fontSize}px "Etude Noire"`;
+  ctx.fillStyle = "#535353";
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
 }
+
 document.fonts.load('70px "Etude Noire"').then(() => {
   showGameOver();
 });
