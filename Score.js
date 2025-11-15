@@ -32,7 +32,7 @@ export default class Score {
     this.ctx.fillStyle = "#535353";
   
     const scoreX = this.canvas.width - 85 * this.scaleRatio;
-    const highScoreX = scoreX - 155 * this.scaleRatio;
+    const highScoreX = scoreX - 135 * this.scaleRatio;
   
     const scorePadded = Math.floor(this.score).toString().padStart(6, 0);
     const highScorePadded = highScore.toString().padStart(6, 0);
