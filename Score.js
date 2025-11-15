@@ -27,17 +27,17 @@ export default class Score {
     const highScore = Number(localStorage.getItem(this.HIGH_SCORE_KEY));
     const y = 20 * this.scaleRatio;
   
-    const fontSize = 14 * this.scaleRatio;
+    const fontSize = 12 * this.scaleRatio;
     this.ctx.font = `${fontSize}px "Etude Noire"`;
     this.ctx.fillStyle = "#535353";
   
     const scoreX = this.canvas.width - 55 * this.scaleRatio;
-    const highScoreX = scoreX - 125 * this.scaleRatio;
+    const highScoreX = scoreX - 135 * this.scaleRatio;
   
     const scorePadded = Math.floor(this.score).toString().padStart(6, 0);
     const highScorePadded = highScore.toString().padStart(6, 0);
   
     this.ctx.fillText(scorePadded, scoreX, y);
-    this.ctx.fillText(`Рекорд ${highScorePadded}`, highScoreX, y);
+    this.ctx.fillText(`Рекорд: ${highScorePadded}`, highScoreX, y);
   }
 }
