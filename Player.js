@@ -48,6 +48,13 @@ export default class Player {
 
     window.addEventListener("touchstart", this.touchstart);
     window.addEventListener("touchend", this.touchend);
+
+    // mouse
+    window.removeEventListener("mousedown", this.mousedown);
+    window.removeEventListener("mouseup", this.mouseup);
+    
+    window.addEventListener("mousedown", this.mousedown);
+    window.addEventListener("mouseup", this.mouseup);
   }
 
   touchstart = () => {
@@ -68,6 +75,14 @@ export default class Player {
     if (event.code === "Space") {
       this.jumpPressed = false;
     }
+  };
+
+  mousedown = () => {
+    this.jumpPressed = true;
+  };
+  
+  mouseup = () => {
+    this.jumpPressed = false;
   };
 
   update(gameSpeed, frameTimeDelta) {
