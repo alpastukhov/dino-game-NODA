@@ -162,7 +162,11 @@ function setupGameReset() {
     hasAddedEventListenersForRestart = true;
 
     setTimeout(() => {
-      window.addEventListener("keyup", reset, { once: true });
+      window.addEventListener("keyup", (e) => {
+          if (e.code === "Space") {
+            reset();
+          }
+        }, { once: true });
       window.addEventListener("touchstart", reset, { once: true });
       canvas.addEventListener("mousedown", reset, { once: true }); // ← добавляем клик мышью
     }, 1000);
