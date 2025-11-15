@@ -98,10 +98,14 @@ function setScreen() {
 setScreen();
 
 // Прыжок по клику мыши
-window.addEventListener("mousedown", () => {
+canvas.addEventListener("mousedown", () => {
   if (!gameOver && !waitingToStart) {
-    player.jump();
+    player.jumpPressed = true; // имитация нажатия пробела
   }
+});
+
+canvas.addEventListener("mouseup", () => {
+  player.jumpPressed = false; // имитация отпускания пробела
 });
 
 
