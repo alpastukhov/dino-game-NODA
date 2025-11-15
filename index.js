@@ -123,7 +123,7 @@ function getScaleRatio() {
 }
 
 function showGameOver() {
-  const fontSize = 40 * scaleRatio;
+  const fontSize = 32 * scaleRatio;
   ctx.font = `${fontSize}px "Etude Noire"`;
   ctx.fillStyle = "#535353";
 
@@ -165,16 +165,78 @@ function reset() {
   gameSpeed = GAME_SPEED_START;
 }
 
+/*
 function showStartGameText() {
-  const fontSize = 40 * scaleRatio;
+  const fontSize = 32 * scaleRatio;
   ctx.font = `${fontSize}px "Etude Noire"`;
   ctx.fillStyle = "#535353";
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  ctx.fillText("Tap Screen To Start", canvas.width / 2, canvas.height / 2);
+  ctx.fillText("Кликните для старта", canvas.width / 2, canvas.height / 2);
 }
+*/
+
+function showStartGameText() {
+  const fontSize = 32 * scaleRatio;
+  ctx.font = `${fontSize}px "Etude Noire"`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  const text = "Кликните для старта";
+
+  // замеряем ширину текста
+  const textWidth = ctx.measureText(text).width;
+  const paddingX = 20 * scaleRatio;
+  const paddingY = 12 * scaleRatio;
+
+  // позиция центра
+  const x = canvas.width / 2;
+  const y = canvas.height / 2;
+
+  // размеры кнопки
+  const boxWidth = textWidth + paddingX * 2;
+  const boxHeight = fontSize + paddingY * 2;
+
+  // рисуем скруглённый прямоугольник
+  const radius = 14 * scaleRatio;
+
+  drawRoundedRect(
+    ctx,
+    x - boxWidth / 2,
+    y - boxHeight / 2,
+    boxWidth,
+    boxHeight,
+    radius,
+    "#e3e3e3" // цвет фона кнопки
+  );
+
+  // текст
+  ctx.fillStyle = "#333";
+  ctx.fillText(text, x, y);
+}
+
+// вспомогательная функция
+function drawRoundedRect(ctx, x, y, w, h, r, fillColor) {
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+
+  ctx.fillStyle = fillColor;
+  ctx.fill();
+}
+
+
+
 
 function updateGameSpeed(frameTimeDelta) {
   gameSpeed += frameTimeDelta * GAME_SPEED_INCREMENT;
