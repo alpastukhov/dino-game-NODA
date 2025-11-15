@@ -53,8 +53,8 @@ export default class Player {
     window.removeEventListener("mousedown", this.mousedown);
     window.removeEventListener("mouseup", this.mouseup);
     
-    window.addEventListener("mousedown", this.mousedown);
-    window.addEventListener("mouseup", this.mouseup);
+    window.addEventListener("mousedown", () => { this.jumpPressed = true; });
+    window.addEventListener("mouseup", () => { this.jumpPressed = false; });
   }
 
   touchstart = () => {
