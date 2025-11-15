@@ -126,12 +126,9 @@ function showGameOver() {
   const y = canvas.height / 2;
   ctx.fillText("GAME OVER", x, y);
 }
-
-/*
 document.fonts.load('70px "Etude Noire"').then(() => {
   showGameOver();
 });
-*/
 
 function setupGameReset() {
   if (!hasAddedEventListenersForRestart) {
@@ -154,29 +151,14 @@ function reset() {
   gameSpeed = GAME_SPEED_START;
 }
 
-
-const startButton = document.createElement("button");
-startButton.innerText = "Играть";
-startButton.style.position = "absolute";
-startButton.style.left = "50%";
-startButton.style.top = "50%";
-startButton.style.transform = "translate(-50%, -50%)";
-startButton.style.padding = "20px 40px";
-startButton.style.cursor = "pointer";
-startButton.style.border = "none";
-startButton.style.borderRadius = "10px";
-startButton.style.background = "#fff";
-startButton.style.fontFamily = "Etude Noire";
-startButton.style.fontSize = `${60 * (getScaleRatio() || 1)}px`;
-startButton.style.color = "grey";
-document.body.appendChild(startButton);
-
-startButton.addEventListener("click", () => {
-  waitingToStart = false; // игра теперь запущена
-  startButton.remove();    // убираем кнопку
-  previousTime = null;     // сброс таймера для gameLoop
-});
-
+function showStartGameText() {
+  const fontSize = 40 * scaleRatio;
+  ctx.font = `${fontSize}px Verdana`;
+  ctx.fillStyle = "grey";
+  const x = canvas.width / 14;
+  const y = canvas.height / 2;
+  ctx.fillText("Tap Screen To Start", x, y);
+}
 
 function updateGameSpeed(frameTimeDelta) {
   gameSpeed += frameTimeDelta * GAME_SPEED_INCREMENT;
@@ -231,3 +213,13 @@ function gameLoop(currentTime) {
 }
 
 requestAnimationFrame(gameLoop);
+
+// Старт игры по клику или тапу
+function startGame() {
+  waitingToStart = false;
+  window.removeEventListener("click", startGame);
+  window.removeEventListener("touchstart", startGame);
+}
+
+window.addEventListener("click", startGame);
+window.addEventListener("touchstart", startGame);
