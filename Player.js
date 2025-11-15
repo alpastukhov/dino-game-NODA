@@ -18,7 +18,7 @@ export default class Player {
     this.maxJumpHeight = maxJumpHeight;
     this.scaleRatio = scaleRatio;
 
-    this.x = 20 * scaleRatio;
+    this.x = 40 * scaleRatio;
     this.y = this.canvas.height - this.height - 1.5 * scaleRatio;
     this.yStandingPosition = this.y;
 
