@@ -130,15 +130,15 @@ function showGameOver() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+ ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2 - 20 * scaleRatio);
 
   // Доп. текст
-  const smallFontSize = 16 * scaleRatio;
+  const smallFontSize = 12 * scaleRatio;
   ctx.font = `${smallFontSize}px "Etude Noire"`;
   ctx.fillStyle = "#6d6d6d";
 
   ctx.fillText(
-    "Для старта нажмите Пробел",
+    "Нажмите Пробел",
     canvas.width / 2,
     canvas.height / 2 + fontSize
   );
