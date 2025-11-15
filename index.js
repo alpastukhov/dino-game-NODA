@@ -3,9 +3,11 @@ import Ground from "./Ground.js";
 import CactiController from "./CactiController.js";
 import Score from "./Score.js";
 
+/*
 document.fonts.load('10px "Etude Noire"').then(() => {
   requestAnimationFrame(gameLoop);
 });
+*/
 
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
