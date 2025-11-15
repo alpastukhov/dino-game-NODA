@@ -118,7 +118,6 @@ function getScaleRatio() {
   }
 }
 
-/*
 function showGameOver() {
   const fontSize = 60 * scaleRatio;
   ctx.font = `${fontSize}px Etude Noire`;
@@ -127,31 +126,9 @@ function showGameOver() {
   const y = canvas.height / 2;
   ctx.fillText("GAME OVER", x, y);
 }
-*/
-
-function showGameOver() {
-  const fontSize = 70 * scaleRatio;
-  const text = "GAME OVER";
-  const letterSpacing = -2 * scaleRatio; // межбуквенный интервал
-
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  ctx.font = `${fontSize}px "Etude Noire"`;
-  ctx.fillStyle = "grey";
-
-  let x = canvas.width / 4.5;
-  const y = canvas.height / 2;
-
-  for (let i = 0; i < text.length; i++) {
-    ctx.fillText(text[i], x, y);
-    x += ctx.measureText(text[i]).width + letterSpacing;
-  }
-}
-
 document.fonts.load('70px "Etude Noire"').then(() => {
   showGameOver();
 });
-
 
 function setupGameReset() {
   if (!hasAddedEventListenersForRestart) {
