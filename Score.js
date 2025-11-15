@@ -27,12 +27,12 @@ export default class Score {
     const highScore = Number(localStorage.getItem(this.HIGH_SCORE_KEY));
     const y = 20 * this.scaleRatio;
   
-    const fontSize = 20 * this.scaleRatio;
+    const fontSize = 14 * this.scaleRatio;
     this.ctx.font = `${fontSize}px "Etude Noire"`;
     this.ctx.fillStyle = "#535353";
   
     const scoreX = this.canvas.width - 75 * this.scaleRatio;
-    const highScoreX = scoreX - 155 * this.scaleRatio;
+    const highScoreX = scoreX - 135 * this.scaleRatio;
   
     const scorePadded = Math.floor(this.score).toString().padStart(6, 0);
     const highScorePadded = highScore.toString().padStart(6, 0);
