@@ -119,7 +119,7 @@ function getScaleRatio() {
 }
 
 function showGameOver() {
-  const fontSize = 70 * scaleRatio;
+  const fontSize = 60 * scaleRatio;
   ctx.font = `${fontSize}px Etude Noire`;
   ctx.fillStyle = "grey";
   const x = canvas.width / 4.5;
