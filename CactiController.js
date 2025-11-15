@@ -30,6 +30,7 @@ export default class CactiController {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  /*
   createCactus() {
     const index = this.getRandomNumber(0, this.cactiImages.length - 1);
     const cactusImage = this.cactiImages[index];
@@ -46,6 +47,30 @@ export default class CactiController {
 
     this.cacti.push(cactus);
   }
+  */
+
+  createCactus() {
+    const numCacti = Math.random() < 0.3 ? 2 : 1; // 30% шанс на 2 кактуса
+    for (let i = 0; i < numCacti; i++) {
+      const index = this.getRandomNumber(0, this.cactiImages.length - 1);
+      const cactusImage = this.cactiImages[index];
+      const x = this.canvas.width * 1.5 + i * 60 * this.scaleRatio; // сдвиг для второго кактуса
+      const y = this.canvas.height - cactusImage.height;
+      const cactus = new Cactus(
+        this.ctx,
+        x,
+        y,
+        cactusImage.width,
+        cactusImage.height,
+        cactusImage.image
+      );
+      this.cacti.push(cactus);
+    }
+  }
+
+  
+
+  
 
   update(gameSpeed, frameTimeDelta) {
     if (this.nextCactusInterval <= 0) {
