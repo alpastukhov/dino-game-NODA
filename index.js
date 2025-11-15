@@ -133,7 +133,7 @@ function showGameOver() {
   ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
 
   // Доп. текст
-  const smallFontSize = 22 * scaleRatio;
+  const smallFontSize = 16 * scaleRatio;
   ctx.font = `${smallFontSize}px "Etude Noire"`;
   ctx.fillStyle = "#6d6d6d";
 
