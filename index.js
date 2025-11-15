@@ -126,9 +126,12 @@ function showGameOver() {
   const y = canvas.height / 2;
   ctx.fillText("GAME OVER", x, y);
 }
+
+/*
 document.fonts.load('70px "Etude Noire"').then(() => {
   showGameOver();
 });
+*/
 
 function setupGameReset() {
   if (!hasAddedEventListenersForRestart) {
@@ -169,8 +172,9 @@ startButton.style.color = "grey";
 document.body.appendChild(startButton);
 
 startButton.addEventListener("click", () => {
-  waitingToStart = false;
-  startButton.remove();
+  waitingToStart = false; // игра теперь запущена
+  startButton.remove();    // убираем кнопку
+  previousTime = null;     // сброс таймера для gameLoop
 });
 
 
