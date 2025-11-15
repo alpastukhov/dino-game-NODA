@@ -184,7 +184,7 @@ function showStartGameText() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  const text = "Кликните для старта";
+  const text = "Играть";
 
   const textWidth = ctx.measureText(text).width;
 
