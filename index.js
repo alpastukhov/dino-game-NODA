@@ -179,60 +179,48 @@ function showStartGameText() {
 */
 
 function showStartGameText() {
-  const fontSize = 32 * scaleRatio;
+  const fontSize = 16 * scaleRatio;
   ctx.font = `${fontSize}px "Etude Noire"`;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
   const text = "Кликните для старта";
 
-  // замеряем ширину текста
   const textWidth = ctx.measureText(text).width;
-  const paddingX = 20 * scaleRatio;
-  const paddingY = 12 * scaleRatio;
 
-  // позиция центра
+  const paddingX = 20 * scaleRatio;
+  const paddingTop = 10 * scaleRatio;
+  const paddingBottom = 15 * scaleRatio;
+
   const x = canvas.width / 2;
   const y = canvas.height / 2;
 
-  // размеры кнопки
   const boxWidth = textWidth + paddingX * 2;
-  const boxHeight = fontSize + paddingY * 2;
+  const boxHeight = fontSize + paddingTop + paddingBottom;
 
-  // рисуем скруглённый прямоугольник
+  const bx = x - boxWidth / 2;
+  const by = y - boxHeight / 2;
   const radius = 14 * scaleRatio;
 
-  drawRoundedRect(
-    ctx,
-    x - boxWidth / 2,
-    y - boxHeight / 2,
-    boxWidth,
-    boxHeight,
-    radius,
-    "#e3e3e3" // цвет фона кнопки
-  );
+  // прямоугольник со скруглением
+  ctx.beginPath();
+  ctx.moveTo(bx + radius, by);
+  ctx.lineTo(bx + boxWidth - radius, by);
+  ctx.quadraticCurveTo(bx + boxWidth, by, bx + boxWidth, by + radius);
+  ctx.lineTo(bx + boxWidth, by + boxHeight - radius);
+  ctx.quadraticCurveTo(bx + boxWidth, by + boxHeight, bx + boxWidth - radius, by + boxHeight);
+  ctx.lineTo(bx + radius, by + boxHeight);
+  ctx.quadraticCurveTo(bx, by + boxHeight, bx, by + boxHeight - radius);
+  ctx.lineTo(bx, by + radius);
+  ctx.quadraticCurveTo(bx, by, bx + radius, by);
+  ctx.closePath();
+
+  ctx.fillStyle = "#e3e3e3";
+  ctx.fill();
 
   // текст
   ctx.fillStyle = "#333";
   ctx.fillText(text, x, y);
-}
-
-// вспомогательная функция
-function drawRoundedRect(ctx, x, y, w, h, r, fillColor) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
-
-  ctx.fillStyle = fillColor;
-  ctx.fill();
 }
 
 
