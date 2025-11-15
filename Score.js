@@ -37,7 +37,7 @@ export default class Score {
     const scorePadded = Math.floor(this.score).toString().padStart(6, 0);
     const highScorePadded = highScore.toString().padStart(6, 0);
   
-    this.ctx.fillText(scorePadded, scoreX, y);
+    this.ctx.fillText(`Очки: ${scorePadded}`, scoreX, y);
     this.ctx.fillText(`Рекорд: ${highScorePadded}`, highScoreX, y);
   }
 }
