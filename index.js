@@ -133,9 +133,16 @@ function showGameOver() {
   ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
 }
 
-document.fonts.load('70px "Etude Noire"').then(() => {
-  showGameOver();
-});
+const smallFontSize = 22 * scaleRatio;
+  ctx.font = `${smallFontSize}px "Etude Noire"`;
+  ctx.fillStyle = "#6d6d6d";
+
+  ctx.fillText(
+    "Для старта нажмите Пробел",
+    canvas.width / 2,
+    canvas.height / 2 + fontSize
+  );
+}
 
 function setupGameReset() {
   if (!hasAddedEventListenersForRestart) {
