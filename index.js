@@ -140,7 +140,7 @@ function showGameOver() {
   ctx.fillText(
     "Нажмите Пробел",
     canvas.width / 2,
-    canvas.height / 2 + fontSize
+    canvas.height / 2 + fontSize - 15 * scaleRatio
   );
 }
 
