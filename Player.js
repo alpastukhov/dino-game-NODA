@@ -49,12 +49,6 @@ export default class Player {
     window.addEventListener("touchstart", this.touchstart);
     window.addEventListener("touchend", this.touchend);
 
-    // mouse
-    window.removeEventListener("mousedown", this.mousedown);
-    window.removeEventListener("mouseup", this.mouseup);
-    
-    window.addEventListener("mousedown", () => { this.jumpPressed = true; });
-    window.addEventListener("mouseup", () => { this.jumpPressed = false; });
   }
 
   touchstart = () => {
@@ -77,13 +71,6 @@ export default class Player {
     }
   };
 
-  mousedown = () => {
-    this.jumpPressed = true;
-  };
-  
-  mouseup = () => {
-    this.jumpPressed = false;
-  };
 
   update(gameSpeed, frameTimeDelta) {
     this.run(gameSpeed, frameTimeDelta);
